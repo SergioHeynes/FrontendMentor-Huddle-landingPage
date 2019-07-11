@@ -1,3 +1,13 @@
-html {
-    font-size: 62.5%;
-}
+@import '../../../node_modules/normalize-scss/sass/normalize/import-now';
+@import 'base/mixins';
+@import 'base/variables';
+@import 'base/global';
+@import 'modules/wrapper';
+@import 'modules/bg-image';
+@import 'modules/header';
+@import 'modules/row';
+@import 'modules/main-content';
+@import 'modules/btn';
+@import 'modules/social-media-nav';
+@import 'modules/footer';
+@import 'modules/attribution';
