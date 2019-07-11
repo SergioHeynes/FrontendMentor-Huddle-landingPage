@@ -5,10 +5,26 @@ sass = require('gulp-sass'),
 postcss = require('gulp-postcss'),
 autoprefixer = require('autoprefixer');
 
+
+// Preview
+
+function previewDist() {
+    console.log('Starting preview Dist task');
+
+    browserSync.init({
+        notify: false,
+        server: {
+            baseDir: 'docs'
+        }
+    });
+}
+
 //for deploy
-const imagemin = require('gulp-imagemin'), 
+const imagemin = require('gulp-imagemin'), // optimaze images
 del = require('del'), 
-usemin = require('gulp-usemin');
+usemin = require('gulp-usemin'), 
+rev = require('gulp-rev'), // rev our files
+cssnano = require('gulp-cssnano'); // compress our CSS
 
 
 function stylesTask() {
@@ -47,20 +63,25 @@ function optimazeImages() {
         interlaced: true, // gif images
         multipass: true // svg files
     }))
-    .pipe(gulp.dest('./dist/assets/images'));
+    .pipe(gulp.dest('./docs/assets/images'));
 }
 
 function deleteDistFolder() {
-    return del('./dist');
+    return del('./docs');
 }
 
-function usemin() {
+function useminTask() {
     return gulp.src('./app/index.html')
-    .pipe(usemin())
-    .pipe(gulp.dest('./dist'));
+    .pipe(usemin({
+        css: [function() {return rev()}, function() {return cssnano()}] // to tell usemin what we wanted to do with our CSS files
+        // js: []
+    }))
+    .pipe(gulp.dest('./docs'));
 }
 
 
-exports.build = gulp.series(deleteDistFolder, optimazeImages, usemin);
+exports.build = gulp.series(deleteDistFolder, stylesTask, optimazeImages, useminTask);
+
+exports.previewDist = previewDist;
 
 
