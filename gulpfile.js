@@ -5,6 +5,10 @@ sass = require('gulp-sass'),
 postcss = require('gulp-postcss'),
 autoprefixer = require('autoprefixer');
 
+//for deploy
+const imagemin = require('gulp-imagemin'), 
+del = require('del'), 
+usemin = require('gulp-usemin');
 
 
 function stylesTask() {
@@ -34,5 +38,28 @@ function watch() {
 
 exports.watch = watch;
 
+
+function optimazeImages() {
+    return gulp.src(['./app/assets/images/**/*'])
+    .pipe(imagemin({
+        progressive: true, // optimaze jpg images
+        interlaced: true, // gif images
+        multipass: true // svg files
+    }))
+    .pipe(gulp.dest('./dist/assets/images'));
+}
+
+function deleteDistFolder() {
+    return del('./dist');
+}
+
+function usemin() {
+    return gulp.src('./app/index.html')
+    .pipe(usemin())
+    .pipe(gulp.dest('./dist'));
+}
+
+
+exports.build = gulp.series(deleteDistFolder, optimazeImages, usemin);
 
 
