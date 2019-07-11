@@ -1,0 +1,39 @@
+.header {
+
+    &__logo {
+        display: block;
+        padding-top: 8rem; 
+        padding-bottom: 10rem;
+
+        @include respond(tab-port) {
+            width: 45%;
+            padding-top: 6rem; 
+            padding-bottom: 8rem;
+        }
+
+        @include respond(phone) {
+            width: 45%;
+            padding-top: 4rem; 
+            padding-bottom: 6rem;
+        }
+
+    }
+
+    &__illustration {
+        float: left;
+        width: 55%;
+
+        @include respond(tab-land) {
+            float: none;
+            width: 100%;
+        }
+    }
+
+    &__illustration--r-margin{
+        margin-right: 6rem;
+
+        @include respond(tab-port) {
+            margin-right: 0;
+        }
+    }
+}

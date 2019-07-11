@@ -1,0 +1,45 @@
+.btn {
+
+    &, 
+    &:link, 
+    &:visited {
+    cursor: pointer;
+    background-color: $color-white;
+    font-family: inherit;
+    font-size: 1.6rem;
+    color: $color-violet;
+    border: 1px solid $color-violet;
+    border-radius: 80px;
+    padding: 2rem 6.6rem;
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+
+    @include respond(phone) {
+        padding: 1.6rem 7rem;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    }
+    
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+
+    }
+
+    
+
+    &--t-margin {
+        margin-top: 3rem;
+        
+        @include respond(phone) {
+            margin-top: 1.5rem;
+        }
+    }
+
+}

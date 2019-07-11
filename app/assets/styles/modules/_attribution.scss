@@ -1,0 +1,14 @@
+.attribution { 
+    font-size: 1.1rem; 
+    text-align: center; 
+
+    @include respond(phone) {
+        font-size: .9rem;
+    }
+
+    a { 
+        text-decoration: none;
+        color: $color-white; 
+    }
+}
+

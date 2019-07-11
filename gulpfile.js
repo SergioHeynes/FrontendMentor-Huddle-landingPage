@@ -30,6 +30,7 @@ function watch() {
     });
     console.log('Server Started');
     gulp.watch('./app/assets/styles/**/*.scss', stylesTask);
+    gulp.watch('./app/*.html').on('change', browserSync.reload);
 }
 
 exports.watch = watch;
