@@ -441,16 +441,23 @@ body {
       padding-left: 4rem;
       padding-right: 4rem; } }
 
-.bg-image__image {
-  width: 100%;
-  height: 100%;
+.bg-image {
   position: absolute;
-  z-index: -1;
   top: 0;
-  left: 0; }
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: url("/assets/images/bg-desktop.svg") no-repeat;
+  background-size: cover;
+  z-index: -1; }
   @media only screen and (max-width: 75em) {
-    .bg-image__image {
-      height: auto; } }
+    .bg-image {
+      background-image: url("/assets/images/bg-mobile.svg"); } }
+  @media only screen and (max-width: 56.25em) {
+    .bg-image {
+      background-size: contain; } }
 
 .header__logo {
   display: block;
@@ -591,9 +598,6 @@ body {
 .attribution {
   font-size: 1.1rem;
   text-align: center; }
-  @media only screen and (max-width: 37.5em) {
-    .attribution {
-      font-size: .9rem; } }
   .attribution a {
     text-decoration: none;
     color: #FFF; }
