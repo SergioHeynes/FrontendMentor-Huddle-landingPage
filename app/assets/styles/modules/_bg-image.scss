@@ -6,12 +6,12 @@
     right: 0;
     width: 100%;
     height: 100vh;
-    background: url('/assets/images/bg-desktop.svg') no-repeat;
+    background: url('../images/bg-desktop.svg') no-repeat;
     background-size: cover;
     z-index: -1;
     
     @include respond(tab-land) {
-        background-image: url('/assets/images/bg-mobile.svg');
+        background-image: url('../images/bg-mobile.svg');
     }
     
     @include respond(tab-port) {
